@@ -1,0 +1,79 @@
+ @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Playfair+Display&family=Poppins:ital@1&family=Roboto&display=swap');
+  .contain{
+    min-height: 72vh;
+    background-color: rgb(227, 234, 227);
+    color: blueviolet;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: flex;
+    margin: 23px auto;
+    width: 70%;
+    border-radius: 12px;
+    padding: 34px;
+  }
+  
+.bottom{
+    position:sticky;
+    height:130px;
+    background-color: rgb(59, 8, 160);
+    color: rgb(9, 10, 9);
+    bottom:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+#seekBar{
+  width: 80vw;
+  text-align: center;
+  cursor: pointer;
+}
+.contain{
+  min-height: 70vh;
+  background-color: rgb(13, 14, 13);
+  color: rgb(241, 243, 241);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  display: flex;
+  margin: 29px auto;
+  width: 70%;
+  border-radius: 12px;
+  padding: 34px;
+  background-image:url(image.png) ;
+}
+.singerinfo{
+  color: aliceblue;
+}
+.fa-spotify{
+  color: aliceblue;
+}
+
+.songItem img{
+  width: 43px;
+  margin: 0 23px;
+  border-radius: 34px;
+
+}
+.timeStamp{
+ margin: 0 14px;
+ 
+}
+ 
+.songItem{
+  height: 5 0px;
+  display: flex;
+  background-color: aliceblue;
+  width: 150%;
+  color: black;
+  margin: 15px 0;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 32px;
+}
+.icons{
+  cursor: pointer;
+}
+.songlistplay{
+  cursor: pointer;
+}

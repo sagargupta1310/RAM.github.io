@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+     <!-- <script src="song.js"></script> -->
+    <!-- <script src="pass.js"></script>  -->
+</head>
+<body>
+    <style>
+        /* CSS styles for the navigation bar */
+        .navbar {
+            background-color: #101210;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: rgb(244, 240, 240);
+            font-weight: bold;
+        }
+    </style>
+ </head>
+ <body>
+    <div class="navbar">
+        <ul>
+            <i class="fa-brands fa-spotify"></i>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Browse</a></li>
+            <li><a href="#">Your Library</a></li>
+        </ul>
+        <ul>
+            <li><a href="#">Search</a></li>
+            <li><a href="#">Profile</a></li>
+        </ul>
+    </div>
+   
+ <div class="contain">
+   <div class="songlist"><h1>TOP SONGS</h1>
+    <div class="songItemcontain"> </div>
+   <div class="songItem">
+    <img src="maxresdefault.jpg" alt="1">
+    <span class="songname">Chaar kadam</span>
+    <span class="songlistplay"> <span class="timestamp">5:54</span><i id="0" class="far songItemPlay fa-2x fa-play-circle"></i></span>
+</div>
+<div class="songItem">
+    <img src="do.jpg" alt="1">
+    <span class="songname">Do you know</span>
+    <span class="songlistplay"> <span class="timestamp">5:54</span><i id="1" class="far songItemPlay fa-2x fa-play-circle"></i></span>
+</div><div class="songItem">
+    <img src="maxresdefault (1).jpg" alt="1">
+    <span class="songname">Tum ho</span>
+    <span class="songlistplay"> <span class="timestamp">5:54</span><i id="2" class="far songItemPlay fa-2x fa-play-circle"></i></span>
+</div>
+<div class="songItem">
+    <img src="th (1).jpg" alt="1">
+    <span class="songname">Sajda</span>
+    <span class="songlistplay"> <span class="timestamp">5:54</span><i id="3" class="far songItemPlay fa-2x fa-play-circle"></i></span>
+</div><div class="songItem">
+    <img src="th (2).jpg" alt="1">
+    <span class="songname">Tera hone laga hoon</span>
+    <span class="songlistplay"> <span class="timestamp">5:54</span><i id="4" class="far songItemPlay fa-2x fa-play-circle"></i></span>
+</div><div class="songItem">
+    <img src="iktara-header.jpg" alt="1">
+    <span class="songname">Iktara</span>
+    <span class="songlistplay"> <span class="timestamp">5:54</span><i id="5" class="far songItemPlay fa-2x fa-play-circle"></i></span>
+</div><div class="songItem">
+    <img src="tumblr_mkmad7d17e1qaxduxo1_r1_1364974046_cover.jpg" alt="1">
+    <span class="songname">Tere naina</span>
+    <span class="songlistplay"> <span class="timestamp">5:54</span><i id="6" class="far songItemPlay fa-2x fa-play-circle"></i></span>
+</div><div class="songItem">
+    <img src="hqdefault.jpg" alt="1">
+    <span class="songname">Bade ache lagte ho</span>
+    <span class="songlistplay"> <span class="timestamp">5:54</span><i id="7" class="far songItemPlay fa-2x fa-play-circle"></i></span>
+</div><div class="songItem">
+    <img src="hqdefault (1).jpg" alt="1">
+    <span class="songname">Ye tune kya kiya.</span>
+    <span class="songlistplay"> <span class="timestamp">5:54</span><i id="8" class="far songItemPlay fa-2x fa-play-circle"></i></span>
+</div><div class="songItem">
+    <img src="maxresdefault (2).jpg" alt="1">
+    <span class="songname">Tujh mein rab dikhta hai</span>
+    <span class="songlistplay"> <span class="timestamp">5:54</span><i id="9" class="far songItemPlay fa-2x fa-play-circle"></i></span>
+</div>
+     
+   </div>
+   </div>
+   <div class="songBanner"></div>
+ </div>
+
+ <div class="bottom">
+    <input type="range" name="range" id="seekBar" min="0" value="0" max="100"><div id="progressBar"></div>
+    <div class="icons">
+      <i class="fas fa-3x fa-step-backward"></i>
+     
+
+     <audio id="audioPlayer" src="C:\Users\sg678\OneDrive\Desktop\SPOTIFY\.vscode\Do_You_Know_1.mp3"></audio>
+  <button id="playButton" class="far fa-3x fa-play-circle"></button>
+  <body> <script>
+    const audio = document.getElementById("audioPlayer");
+    const playButton = document.getElementById("playButton");
+
+    playButton.addEventListener("click", function() {
+      if (audio.paused) {
+        audio.play();
+        playButton.className = "far fa-3x fa-pause-circle"; // Change the icon to a pause button
+      } else {
+        audio.pause();
+        playButton.className = "far fa-3x fa-play-circle"; // Change the icon back to a play button
+      }
+    });</script>
+     
+    <script>
+        const audioPlayer = document.getElementById('audioPlayer');
+        const seekBar = document.getElementById('seekBar');
+        const progressBar = document.getElementById('progressBar');
+
+// Update the position of the seek bar as the song plays
+audioPlayer.addEventListener('timeupdate', function() {
+  const currentTime = audioPlayer.currentTime;
+  const duration = audioPlayer.duration;
+  const progressPercentage = (currentTime / duration) * 100;
+
+  progressBar.style.width = progressPercentage + '%';
+});
+
+// Seek to a specific position when the seek bar is clicked
+seekBar.addEventListener('click', function(e) {
+  const seekBarWidth = seekBar.offsetWidth;
+  const clickPosition = e.offsetX;
+  const duration = audioPlayer.duration;
+  const newPosition = (clickPosition / seekBarWidth) * duration;
+
+  audioPlayer.currentTime = newPosition;
+});
+
+  </script>
+  <script>
+   const makeAllPlays = () => {
+      const elements = Array.from(document.getElementsByClassName('songItemPlay'));
+      elements.forEach((element) => {
+        element.classList.remove('fa-pause-circle');
+        element.classList.add('fa-play-circle');
+      });
+    };
+
+    const handleClick = (e) => {
+      const clickedElement = e.target;
+
+      if (clickedElement.classList.contains('fa-play-circle')) {
+        makeAllPlays();
+        clickedElement.classList.remove('fa-play-circle');
+        clickedElement.classList.add('fa-pause-circle');
+      } else if (clickedElement.classList.contains('fa-pause-circle')) {
+        clickedElement.classList.remove('fa-pause-circle');
+        clickedElement.classList.add('fa-play-circle');
+      }
+    };
+
+  </script>
+  <script>
+    const songs = [
+  { songName: "DO YOU KNOW",singerName:"sagar", filePath: "Chaar Kadam - PK 128 Kbps.mp3", coverPath: "cover/1.jpg" },
+  { songName: "Chaar kadam",singerName:"sagar",filePath: "Do_You_Know_1.mp3", coverPath: "cover/1.jpg" },
+  { songName: "DO YOU KNOW",singerName:"sagar", filePath: "Tum Ho - Rockstar 128 Kbps.mp3", coverPath: "cover/1.jpg" },
+  { songName: "DO YOU KNOW",singerName:"sagar", filePath: "Sajdaa - My Name Is Khan 128 Kbps.mp3", coverPath: "cover/1.jpg" },
+  { songName: "DO YOU KNOW",singerName:"sagar", filePath: "Tera-Hone-Laga-Hoon(PaglaSongs).mp3", coverPath: "cover/1.jpg" },
+  { songName: "DO YOU KNOW",singerName:"sagar", filePath: "Iktara - Wake Up Sid 128 Kbps.mp3", coverPath: "cover/1.jpg" },
+  { songName: "DO YOU KNOW",singerName:"sagar", filePath: "Tere Naina - My Name Is Khan 128 Kbps.mp3", coverPath: "cover/1.jpg" },
+  { songName: "DO YOU KNOW",singerName:"sagar", filePath: "Bade Achhe Lagte Hain.mp3", coverPath: "cover/1.jpg" },
+  { songName: "DO YOU KNOW",singerName:"sagar", filePath: "Ye Tune Kya Kiya - Once Upon A Time In Mumbaai Dobara 128 Kbps.mp3", coverPath: "cover/1.jpg" },
+  { songName: "DO YOU KNOW",singerName:"sagar", filePath: "Tujhme Rab Dikhta Hai - Roopkumar Rathod-(PagalOne).mp3", coverPath: "cover/1.jpg" },
+];
+
+const songItems = Array.from(document.getElementsByClassName('songItemPlay'));
+const audioElement = document.getElementById('audioPlayer');
+let currentSongIndex = 0;
+
+const playSong = (songIndex) => {
+  if (songIndex >= songs.length) {
+    return; // Stop if all songs have been played
+  }
+
+  songItems.forEach((item) => {
+    item.classList.remove('fa-pause-circle');
+    item.classList.add('fa-play-circle');
+  });
+
+  const currentSongItem = songItems[songIndex];
+  currentSongItem.classList.remove('fa-play-circle');
+  currentSongItem.classList.add('fa-pause-circle');
+  audioElement.src = songs[songIndex].filePath;
+  audioElement.currentTime = 0;
+  audioElement.play();
+
+  console.log(`Now playing: ${songs[songIndex].songName}`);
+
+  currentSongIndex = songIndex;
+};
+
+songItems.forEach((item, index) => {
+  item.addEventListener('click', () => {
+    playSong(index);
+  });
+});
+
+  </script>
+  
+  <script>
+    const seekBarr = document.getElementById('seekBar');
+
+// Update the seek bar when the time updates
+audioElement.addEventListener('timeupdate', () => {
+  const { currentTime, duration } = audioElement;
+  const progress = (currentTime / duration) * 100;
+  seekBarr.value = progress;
+});
+
+// Update the song time when the seek bar changes
+seekBarr.addEventListener('input', () => {
+  const progress = seekBar.value;
+  const currentTime = (progress / 100) * audioElement.duration;
+  audioElement.currentTime = currentTime;
+});
+
+// Update the seek bar continuously while the song is playing
+audioElement.addEventListener('play', () => {
+  seekBarInterval = setInterval(() => {
+    const { currentTime, duration } = audioElement;
+    const progress = (currentTime / duration) * 100;
+    seekBarr.value = progress;
+  }, 1000);
+});
+
+// Clear the seek bar update interval when the song is paused or ended
+audioElement.addEventListener('pause', () => {
+  clearInterval(seekBarInterval);
+});
+
+audioElement.addEventListener('ended', () => {
+  clearInterval(seekBarInterval);
+});
+
+  </script>
+</body>
+     <i class="fas fa-3x fa-step-forward"></i> 
+   </div> 
+    <div class="singerinfo">SMALL LOVE FROM MY SIDE..</div>
+   
+ </div>
+ <script>
+  const forwardButton = document.querySelector('.fa-step-forward');
+const backwardButton = document.querySelector('.fa-step-backward');
+
+forwardButton.addEventListener('click', () => {
+  const nextSongIndex = currentSongIndex + 1;
+  if (nextSongIndex < songs.length) {
+    playSong(nextSongIndex);
+  }
+});
+
+backwardButton.addEventListener('click', () => {
+  const previousSongIndex = currentSongIndex - 1;
+  if (previousSongIndex >= 0) {
+    playSong(previousSongIndex);
+  }
+});
+
+ </script>
+ <script src="https://kit.fontawesome.com/a20db87eb7.js" crossorigin="anonymous"></script>
+</body>
+</html>
+
